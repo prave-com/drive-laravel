@@ -1,0 +1,80 @@
+// _file-cards.scss (for file card styling)
+.custom-row {
+    width: 900px;
+    height: 550px;
+    border-radius: 10px;
+    background: $white;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -0.5rem;
+    gap: 20px;
+}
+
+.custom-row > [class*="col-"] {
+    padding: 0 0.5rem;
+    flex: 1 1 calc(25% - 20px);
+    max-width: calc(25% - 20px);
+    box-sizing: border-box;
+}
+
+.grid-view {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+}
+
+.file-card {
+    border: 1px solid $gray-300;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: $white;
+    margin-bottom: 20px;
+}
+
+.file-icon {
+    font-size: 24px;
+}
+
+.file-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: $black;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-type,
+.file-size,
+.file-actions {
+    font-size: 12px;
+    color: $gray-700;
+}
+
+.file-actions i {
+    margin-right: 5px;
+}
+
+.file-star {
+    color: $yellow;
+}
+
+.file-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 80%;
+    max-width: 180px;
+    background-color: $gray-100;
+    border: 1px solid $gray-300;
+    border-radius: 8px;
+    margin: 10px auto;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+    .file-icon {
+        font-size: 60px;
+        color: $gray-700;
+    }
+}

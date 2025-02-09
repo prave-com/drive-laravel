@@ -1,0 +1,29 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "format:check": "prettier --check --ignore-unknown .",
+        "format": "prettier --write --ignore-unknown ."
+    },
+    "devDependencies": {
+        "@shufo/prettier-plugin-blade": "^1.14.1",
+        "@tailwindcss/forms": "^0.5.2",
+        "alpinejs": "^3.4.2",
+        "autoprefixer": "^10.4.2",
+        "axios": "^1.7.4",
+        "bootstrap": "^5.3.3",
+        "bootstrap-icons": "^1.11.3",
+        "laravel-vite-plugin": "^1.0",
+        "postcss": "^8.4.31",
+        "prettier": "^3.3.3",
+        "sass-embedded": "^1.79.3",
+        "tailwindcss": "^3.1.0",
+        "vite": "^6.0"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "^6.7.1",
+        "sweetalert2": "^11.14.5"
+    }
+}

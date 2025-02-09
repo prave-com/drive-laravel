@@ -1,0 +1,78 @@
+// _responsive.scss (for media queries)
+@media (max-width: 992px) {
+    .custom-row > [class*="col-"] {
+        flex: 1 1 calc(33.33% - 20px);
+        max-width: calc(33.33% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .custom-row > [class*="col-"] {
+        flex: 1 1 calc(50% - 20px);
+        max-width: calc(50% - 20px);
+    }
+}
+
+@media (max-width: 576px) {
+    .custom-row > [class*="col-"] {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+}
+
+/* Responsif Sidebar & Content */
+@media screen and (max-width: 768px) {
+    #sidebar {
+        width: 200px; /* Atur lebar sidebar */
+    }
+
+    #sidebar .brand {
+        font-size: 16px; /* Ukuran font yang lebih besar */
+    }
+
+    #sidebar .text-container {
+        flex-direction: column; /* Mengatur teks dalam kolom untuk tampilan responsif */
+    }
+
+    #content {
+        width: calc(100% - 60px);
+        left: 180px;
+    }
+
+    #content nav .nav-link {
+        display: none;
+    }
+}
+
+/* Responsif Content */
+@media screen and (max-width: 576px) {
+    #content nav .input-group .form-control {
+        display: none;
+    }
+
+    #content nav .input-group .search-btn {
+        width: auto;
+        height: auto;
+        background: transparent;
+        border-radius: none;
+        color: var(--dark);
+    }
+
+    #content nav form.show .input-group .form-control {
+        display: block;
+        width: 80%;
+    }
+
+    #content nav form.show .input-group .search-btn {
+        width: 34px;
+        height: 100%;
+        border-radius: 0 36px 36px 0;
+        color: var(--light);
+        background: var(--red);
+    }
+
+    #content nav form.show ~ .setting,
+    #content nav form.show ~ .profile {
+        display: none;
+    }
+}

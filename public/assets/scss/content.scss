@@ -1,0 +1,39 @@
+// _main.scss (for main layout and content)
+#content {
+    main {
+        width: 100%;
+        padding: 36px 24px;
+        font-family: $font-primary;
+        max-height: calc(100vh - 56px);
+        overflow-y: auto;
+
+        // Scrollbar Styling
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        &::-webkit-scrollbar-track {
+            background: $white;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: $black;
+            border-radius: 10px;
+        }
+
+        .head-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            grid-gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .head-title .left h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: $black;
+        }
+    }
+}

@@ -1,0 +1,164 @@
+/* CONTENT */
+#content {
+    position: relative;
+    width: calc(100% - 280px); /* Lebar ketika sidebar terlihat */
+    left: 130px;
+    transition: 0.3s ease;
+
+    nav {
+        height: 56px; /* Tinggi navbar */
+        background: $white;
+        margin: 0;
+        padding: 0 10px; /* Memberikan padding pada navbar */
+        display: flex;
+        align-items: center; /* Selaraskan elemen secara vertikal */
+        justify-content: space-between; /* Distribusi elemen */
+        font-family: $font-primary;
+        position: relative;
+        z-index: 1000;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $gray-500;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .bx.bx-menu {
+            cursor: pointer;
+            color: $black;
+        }
+
+        .nav-link {
+            color: $black;
+            font-size: 36px;
+            cursor: default;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        form {
+            margin-right: 0; /* Dekatkan form ke profile */
+
+            .input-group {
+                display: flex;
+                align-items: center;
+                height: 36px;
+
+                .form-control {
+                    flex: 1; /* Input mengambil sisa ruang */
+                    padding: 0 16px;
+                    height: 100%;
+                    border: 3px solid $green;
+                    background: $white;
+                    border-radius: 11px 0 0 11px;
+                    outline: none;
+                    color: $black;
+                }
+
+                .search-btn {
+                    width: 36px;
+                    height: 100%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: $dark-green;
+                    color: $white;
+                    font-size: 18px;
+                    border: none;
+                    outline: none;
+                    border-radius: 0 11px 11px 0;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-left: 10px; /* Dekatkan profile ke form */
+            margin-right: 0; /* Hilangkan jarak kanan */
+
+            img {
+                width: 36px;
+                height: 36px;
+                object-fit: cover;
+                border-radius: 50%; /* Gambar bulat */
+            }
+        }
+    }
+
+    /* Profile Divider */
+    .profile-divider {
+        border: none;
+        height: 4px;
+        background-color: $gray-600;
+        margin: 10px auto;
+        width: 90%;
+        border-radius: 11px;
+    }
+}
+
+/* SIDEBAR HIDE */
+#sidebar.hide ~ #content {
+    width: calc(100% - 60px); /* Lebar ketika sidebar tersembunyi */
+    left: 20px;
+}
+
+/* RESPONSIVE CONTENT */
+@media screen and (max-width: 576px) {
+    #content {
+        width: 100%; /* Lebar penuh pada layar kecil */
+        left: 0;
+    }
+
+    #content nav {
+        flex-wrap: nowrap; /* Jangan biarkan elemen membungkus */
+        padding: 0 5px;
+    }
+
+    #content nav .input-group {
+        flex: 1;
+        justify-content: flex-end;
+
+        .form-control {
+            display: none; /* Sembunyikan input pada layar kecil */
+        }
+
+        .search-btn {
+            width: auto;
+            height: auto;
+            background: transparent;
+            border-radius: none;
+            color: $black;
+        }
+    }
+
+    #content nav form.show .input-group .form-control {
+        display: block; /* Tampilkan input saat form aktif */
+        width: 80%;
+    }
+
+    #content nav form.show .input-group .search-btn {
+        width: 34px;
+        height: 100%;
+        border-radius: 0 36px 36px 0;
+        color: $white;
+        background: $red;
+    }
+
+    #content nav form.show ~ .profile {
+        display: none; /* Sembunyikan profil saat pencarian aktif */
+    }
+
+    #content nav .profile {
+        margin-left: 8px;
+        margin-bottom: 34px;
+        margin-right: 15px;
+    }
+}

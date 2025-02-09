@@ -1,0 +1,79 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - name: Install packages
+        run: pnpm install
+      - name: Cache node modules
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.pnpm-store
+          key: node_modules-build-${{ runner.os }}-${{ steps.setup-node.outputs.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            node_modules-build-${{ runner.os }}-${{ steps.setup-node.outputs.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - run: pnpm build
+      - name: Set up php
+        id: setup-php
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+      - name: Load cached vendor
+        id: cached-composer-dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: vendor-test-${{ runner.os }}-${{ steps.setup-php.outputs.php-version }}-${{ hashFiles('**/composer.lock') }}
+      - name: Install dependencies
+        if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --optimize-autoloader
+      - name: Create .env
+        run: cp .env.example .env
+      - name: Generate application key
+        run: php artisan key:generate
+      - name: Start MySQL
+        run: sudo /etc/init.d/mysql start
+      - name: Create testing database
+        env:
+          DB_DATABASE: testing
+          DB_USER: root
+          DB_PASSWORD: root
+        run: mysql -e "CREATE DATABASE IF NOT EXISTS $DB_DATABASE;" -u$DB_USER -p$DB_PASSWORD
+      - name: Test with PestPHP
+        env:
+          DB_CONNECTION: mysql
+          DB_HOST: localhost
+          DB_PORT: 3306
+          DB_DATABASE: testing
+          DB_USER: root
+          DB_PASSWORD: root
+        run: vendor/bin/pest
+    strategy:
+      matrix:
+        node-version: [latest]
+        php-versions: ["8.2", "8.3"]

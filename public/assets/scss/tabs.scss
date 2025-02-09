@@ -1,0 +1,75 @@
+/* Custom styling for tabs */
+.nav-tabs {
+    border-bottom: none;
+
+    .nav-link {
+        border-radius: 10px;
+        padding: 8px 20px;
+        color: $gray-900;
+        font-weight: bold;
+        background-color: $gray-100;
+
+        &.active {
+            background-color: $white;
+            color: $gray-900;
+            border-color: $gray-300;
+        }
+    }
+}
+
+.tab-content {
+    padding: 15px;
+}
+
+.file-card {
+    border: 1px solid $gray-300;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: $white;
+    margin-bottom: 20px;
+
+    .file-icon {
+        font-size: 24px;
+    }
+
+    .file-title {
+        font-size: 14px;
+        font-weight: bold;
+        color: $black;
+    }
+
+    .file-type,
+    .file-size,
+    .file-actions {
+        font-size: 12px;
+        color: $gray-700;
+    }
+
+    .file-actions {
+        i {
+            margin-right: 5px;
+        }
+    }
+
+    .file-star {
+        color: $yellow;
+    }
+}
+
+.file-view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    width: 180px;
+    background-color: $gray-100;
+    border: 1px solid $gray-300;
+    border-radius: 8px;
+    margin: 10px auto;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+
+    .file-icon {
+        font-size: 60px; /* Ukuran ikon file */
+        color: $gray-700; /* Warna ikon */
+    }
+}

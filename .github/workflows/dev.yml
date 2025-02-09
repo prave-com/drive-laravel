@@ -1,0 +1,58 @@
+name: Dev
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  dev:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+      - name: Set up php
+        id: setup-php
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.3"
+      - name: Load cached vendor
+        id: cached-composer-dependencies
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: vendor-dev-${{ runner.os }}-${{ steps.setup-php.outputs.php-version }}-${{ hashFiles('**/composer.lock') }}
+      - name: Install dependencies
+        if: steps.cached-composer-dependencies.outputs.cache-hit != 'true'
+        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist --optimize-autoloader
+      - name: Format with pint
+        run: vendor/bin/pint --test
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: latest
+      - name: Use Node.js ${{ matrix.node-version }}
+        id: setup-node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: "pnpm"
+      - name: Install packages
+        run: pnpm install
+      - name: Cache node modules
+        uses: actions/cache@v4
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.pnpm-store
+          key: node_modules-dev-${{ runner.os }}-${{ steps.setup-node.outputs.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            node_modules-dev-${{ runner.os }}-${{ steps.setup-node.outputs.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+      - name: Format with prettier
+        run: pnpm format:check
+    strategy:
+      matrix:
+        node-version: [latest]

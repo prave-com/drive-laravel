@@ -1,0 +1,270 @@
+/* SIDEBAR */
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100%;
+    background: $white;
+    z-index: 2000;
+    font-family: $font-primary;
+    transition: 0.3s ease;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.25);
+
+    &.hide {
+        width: 60px;
+    }
+
+    .brand {
+        font-size: 18px;
+        font-weight: 700;
+        height: 45px;
+        display: flex;
+        align-items: center;
+        color: $black;
+        position: sticky;
+        top: 0;
+        left: 0;
+        background: $white;
+        z-index: 500;
+        padding-bottom: 20px;
+        box-sizing: content-box;
+
+        i {
+            margin-right: 10px;
+        }
+
+        .bx {
+            min-width: 60px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .text-container {
+            display: flex;
+            text-align: left;
+
+            .line1,
+            .line2 {
+                line-height: 1.2;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .nav {
+        width: 100%;
+        margin-top: 48px;
+        padding: 0;
+
+        .sidebar-divider {
+            border: none;
+            height: 4px;
+            background-color: $gray-600;
+            margin: 10px auto;
+            width: 90%;
+            border-radius: 11px 11px 11px 11px;
+        }
+
+        .nav-item {
+            height: 48px;
+            background: transparent;
+            margin-left: 6px;
+            border-radius: 48px 0 0 48px;
+            padding: 4px;
+            position: relative;
+
+            &.active {
+                background: $white;
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 0%;
+                    top: -40px;
+                    right: 0;
+                    box-shadow: 20px 20px 0 $gray-200;
+                    z-index: -1;
+                }
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 0%;
+                    bottom: -40px;
+                    right: 0;
+                    box-shadow: 20px -20px 0 $gray-200;
+                    z-index: -1;
+                }
+
+                a {
+                    color: $dark-green;
+                }
+            }
+
+            a {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                border-radius: 48px;
+                font-size: 16px;
+                color: $black;
+                white-space: nowrap;
+                overflow-x: hidden;
+                padding-left: 16px;
+
+                &:hover {
+                    color: $dark-green;
+                }
+
+                .bx {
+                    min-width: 36px;
+                    margin-right: 10px;
+                    visibility: hidden;
+                    opacity: 0;
+                    transition:
+                        visibility 0s,
+                        opacity 0.3s ease;
+                }
+                .bx {
+                    min-width: calc(60px - ((4px + 6px) * 2));
+                    display: flex;
+                    justify-content: center;
+                }
+
+                &:hover {
+                    .bx {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                    .text {
+                        color: $dark-green;
+                    }
+                }
+            }
+        }
+    }
+
+    &.hide {
+        .nav-item a {
+            padding-left: 0;
+            justify-content: center;
+
+            .bx {
+                margin-right: 0;
+            }
+            .text {
+                display: none; /* Sembunyikan teks saat sidebar tersembunyi */
+            }
+        }
+
+        .storage-info {
+            display: none;
+        }
+
+        .storage-icon {
+            display: flex;
+        }
+    }
+
+    .nav-link {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        height: 48px;
+        position: relative;
+        padding: 0 16px;
+
+        i {
+            visibility: hidden;
+            opacity: 0;
+            transition:
+                visibility 0s,
+                opacity 0.3s ease;
+            margin-right: 8px;
+        }
+
+        &:hover i,
+        .nav-item.active i {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .text {
+            flex: 1;
+            text-align: left;
+            font-weight: 600;
+            color: $black;
+        }
+        &:hover .text {
+            color: $dark-green;
+        }
+    }
+
+    .storage {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 10px;
+
+        .storage-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+
+            .progress {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            .terpakai {
+                font-size: 10px;
+                color: $black;
+                margin-top: 5px;
+            }
+        }
+
+        .storage-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 48px;
+            text-decoration: none;
+
+            i {
+                font-size: 24px;
+                color: $dark-green;
+                cursor: pointer;
+                margin-left: 10px;
+            }
+        }
+    }
+
+    &.hide {
+        .storage {
+            .storage-info {
+                display: none; /* Sembunyikan informasi storage */
+            }
+
+            .storage-icon {
+                display: flex; /* Tampilkan ikon saja */
+                justify-content: center;
+                align-items: center;
+
+                i {
+                    font-size: 24px;
+                    color: $dark-green;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,22 @@
+// _tabs.scss (for tab styling)
+.nav-tabs {
+    border-bottom: none;
+
+    .nav-link {
+        border-radius: 10px;
+        padding: 8px 20px;
+        color: $gray-900;
+        font-weight: bold;
+        background-color: $white;
+
+        &.active {
+            background-color: $gray-900;
+            color: $white;
+            border-color: $gray-900;
+        }
+    }
+}
+
+.tab-content {
+    width: 100%;
+}

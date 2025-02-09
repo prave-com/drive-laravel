@@ -1,0 +1,188 @@
+/* Remove the default blue color from the ellipsis icon */
+.dropdown-toggle {
+    color: inherit !important; /* Inherit color from the parent or set a specific color */
+}
+
+/* Ensure the icon itself isn't affected by link styles */
+.dropdown-toggle i {
+    color: inherit !important; /* Use the inherited color for the icon */
+}
+
+#content .dropdown-divider {
+    border: none;
+    height: 4px;
+    background-color: #cacbd3;
+    margin: 10px auto;
+    width: 90%;
+    border-radius: 11px;
+}
+
+/* FOLDER SCROLL */
+.folder-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.folder-container::-webkit-scrollbar-thumb {
+    background-color: #333;
+    border-radius: 4px;
+}
+
+.folder-container::-webkit-scrollbar-track {
+    background-color: #e0e0e0;
+}
+
+.folder-file-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* DROPDOWN FOLDER*/
+.dropdown-menu {
+    position: absolute;
+    z-index: 9999;
+}
+
+.file-options .action-menu:focus + .dropdown-menu,
+.file-options .dropdown-menu:hover {
+    display: block;
+}
+
+.form-control {
+    border-radius: 10px;
+}
+
+/* STYLING AUTH */
+.input-field .input:focus,
+.input-field .input:valid {
+    border-bottom: 1px solid #743ae1;
+}
+.input-field .input:focus ~ label,
+.input-field .input:valid ~ label {
+    top: -10px;
+    font-size: 13px;
+    color: #5d5076;
+}
+
+.input-field {
+    position: relative; /* Pastikan input-field memiliki position relative */
+}
+
+@media only screen and (max-width: 768px) {
+    .header {
+        text-align: center;
+    }
+    .header::after {
+        width: 3cm;
+    }
+    .side-image {
+        border-radius: 10px 10px 0 0;
+    }
+    img {
+        width: 35px;
+        position: absolute;
+        top: 20px;
+        left: 47%;
+    }
+    .text {
+        position: absolute;
+        top: 70%;
+        text-align: center;
+    }
+    .text p,
+    i {
+        font-size: 16px;
+    }
+    .row {
+        max-width: 420px;
+        width: 100%;
+    }
+
+    .input-field .toggle-password {
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    img {
+        width: 20px;
+        left: auto;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+/* Tabs Styling */
+.custom-tabs .nav-link {
+    font-weight: bold;
+    border-radius: 10px 10px 0 0;
+    padding: 8px 16px;
+    color: #333;
+}
+
+.custom-tabs .nav-link.active {
+    background-color: #333;
+    color: white;
+}
+
+/* Form Content Styling */
+.form-tab-content {
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 16px;
+}
+
+/* Input Fields */
+.form-control,
+.textarea {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 0.9rem;
+    width: 100%;
+}
+
+.unit {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    color: #777;
+}
+
+.char-count {
+    text-align: right;
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* Submit Button */
+.btn-submit {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #555;
+}
+
+/* USER LIST */
+a.hover-underline:hover {
+    text-decoration: underline !important;
+    color: #000000 !important; /* Menjamin warna tetap gelap saat hover */
+}
