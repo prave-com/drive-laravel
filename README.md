@@ -284,8 +284,8 @@ The following packages are used in this project:
 - Laravel Activity Log: To log user activity.
 - Laravel ZipStream: To create downloadable zip files.
 - Laravel Sail: To run the application in a Docker-based environment.
-- Pest PHP: For testing. Prettier and Laravel
-- Prettier and Pint: For code formatting.
+- Pest PHP: For testing.
+- Prettier and Laravel Pint: For code formatting.
 
 ## Contributing
 
