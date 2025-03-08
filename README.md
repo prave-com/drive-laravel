@@ -303,5 +303,5 @@ new functionality.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/MSIBDiskominfo-pswrn/Drive_Laravel/blob/main/LICENSE) file
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/prave-com/drive-laravel/blob/main/LICENSE) file
 for details.
