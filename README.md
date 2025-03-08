@@ -27,7 +27,7 @@ tracking, and localization support.
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/MSIBDiskominfo-pswrn/Drive_Laravel
+git clone https://github.com/prave-com/drive-laravel
 cd Drive_Laravel
 ```
 
